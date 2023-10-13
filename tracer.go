@@ -14,8 +14,8 @@ import (
 )
 
 const (
-	extensionName          = "github.com/zhevron/gqlgen-opentelemetry"
-	extensionVersion       = "1.0.4"
+	extensionName          = "github.com/withtally/gqlgen-opentelemetry"
+	extensionVersion       = "1.0.5"
 	graphqlComplexity      = attribute.Key("graphql.operation.complexity")
 	graphqlFieldAlias      = attribute.Key("graphql.field.alias")
 	graphqlFieldName       = attribute.Key("graphql.field.name")
@@ -48,7 +48,7 @@ func (t Tracer) InterceptResponse(ctx context.Context, next graphql.ResponseHand
 		return next(ctx)
 	}
 	oc := graphql.GetOperationContext(ctx)
-	if oc.Operation == nil  {
+	if oc.Operation == nil {
 		return next(ctx)
 	}
 	operationType := getOperationTypeAttribute(oc)
